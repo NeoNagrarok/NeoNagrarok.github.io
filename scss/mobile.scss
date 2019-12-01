@@ -1,0 +1,273 @@
+@import 'partials/_var';
+@import 'partials/_base';
+
+@mixin general
+{
+	padding: 1em;
+}
+
+@mixin arrow
+{
+	content: "";
+	position: absolute;
+	top: $general-padding * 2;
+	right: 1em;
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	bottom: initial;
+	left: initial;
+	transition: all 0.5s;
+}
+
+a, a:hover, a:focus	
+{
+	color: initial;
+}
+
+header
+{
+	@include general;
+	
+	.title
+	{
+		text-align: center;
+/*		padding-top: 1em;*/
+		@include general;
+		--aug-border: 5px;
+	    --aug-inset: 5px;
+	    --aug-border-bg: #{$main-color};
+	    --aug-inset-bg: #{$main-color};
+	    --aug-tl: 25px;
+	    --aug-tr: 25px;
+	    --aug-bl: 25px;
+	    --aug-br: 25px;
+	}
+	
+	nav
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+		.link
+		{
+      		padding: 1.5em;
+			--aug-border: 5px;
+		    --aug-inset: 5px;
+		    --aug-border-bg: #{$main-color};
+		    --aug-inset-bg: #{$main-color};
+/*			--aug-l-width: 65%;*/
+			--aug-l-height: 1em;
+/*			--aug-r-width: 65%;*/
+			--aug-r-height: 1em;
+			--aug-t-width: 65%;
+			--aug-t-height: 1em;
+			--aug-b-width: 65%;
+			--aug-b-height: 1em;
+			background-color: $backgroundCyberpunk;
+			color: black;
+			transition: transform 0.3s;
+			
+			&:hover, &:focus-within
+			{
+				transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+				background-color: black;
+				
+				a
+				{
+					color: silver;
+				}
+			}
+		}
+	}
+}
+
+.left-column
+{
+	@include general;
+	
+	h3
+	{
+		font-weight: bold;
+	}
+	
+	ul
+	{
+		font-size: 0.9em;
+		
+		.adress
+		{
+			list-style-image: url('../img/home.png');
+		}
+		
+		.tel
+		{
+			list-style-image: url('../img/phone.png');
+		}
+		
+		.email
+		{
+			list-style-image: url('../img/arobase.png');
+		}
+		
+		.github
+		{
+			list-style-image: url('../img/githubLogoMini.png');
+		}
+		
+		.signalwowLogo
+		{
+			list-style-image: url('../img/signalwowLogoMini.png');
+		}
+		
+		.vihackLogoMini
+		{
+			list-style-image: url('../img/vihackLogoMini.png');
+		}
+		
+		.neowebtechLogoMini
+		{
+			list-style-image: url('../img/neowebtechLogoMini.png');
+		}
+		
+		.mtgsixcolorLogoMini
+		{
+			list-style-image: url('../img/mtgsixcolorLogoMini.png');
+		}
+		
+		.runatisLogoMini
+		{
+			list-style-image: url('../img/runatisLogoMini.png');
+		}
+		
+		.avuedetruffeLogoMini
+		{
+			list-style-image: url('../img/avuedetruffeLogoMini.png');
+		}
+		
+		.flagFr
+		{
+			list-style-image: url('../img/flagFr.png');
+		}
+		
+		.flagEn
+		{
+			list-style-image: url('../img/flagEn.png');
+		}
+		
+		.flagIt
+		{
+			list-style-image: url('../img/flagIt.png');
+		}
+	}
+	
+	article
+	{
+		padding-bottom: $general-padding;
+	}
+}
+
+.right-column
+{
+	@include general;
+	
+	h3
+	{
+		font-size: 1.5em;
+		padding: 0.5em;
+		--aug-border: 5px;
+        --aug-inset: 5px;
+        --aug-border-bg: #{$main-color};
+        --aug-inset-bg: #{$main-color};
+		padding-left: 1em;
+		font-weight: bold;
+		background-color: $backgroundCyberpunk;
+	}
+	
+	h4
+	{
+		position: relative;
+		cursor: pointer;
+		font-size: 1.3em;
+		border-style: solid;
+		border-width: 1px;
+		border-color: $main-color;
+		border-left: 0;
+		padding: $general-padding;
+		background-image: linear-gradient($main-color, $backgroundCyberpunk);
+		padding-right: 2em;
+		padding-left: 2em;
+		transition: all 0.5s;
+		--aug-border: 5px;
+	    --aug-inset: 5px;
+	    --aug-border-bg: #{$main-color};
+	    --aug-inset-bg: #{$main-color};
+		--aug-l-height: 1em;
+	    --aug-tl: 0px;
+		
+		&.collapsed
+		{
+			margin-bottom: $general-padding;
+			border-radius: 0 15px 15px 0;
+		}
+		
+		&:not(.collapsed)
+		{
+			border-bottom: 0;
+			border-radius: 0 15px 0 0;
+			--aug-l-height: 0em;
+			--aug-l-width: 0em;
+			--aug-tl: 1em;
+		}
+		
+		&.collapsed:after
+		{
+			@include arrow;
+			transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+		}
+		
+		&:not(.collapsed):after
+		{
+			@include arrow;
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+		}
+	}
+	
+	ul, p
+	{
+		border-style: solid;
+		border-width: 1px;
+		border-color: $main-color;
+		border-top: 0;
+		border-left: 0;
+		padding: $general-padding;
+		margin-bottom: $general-padding;
+		background-image: linear-gradient($backgroundCyberpunk,  white 1em);
+		transition: all 0.5s;
+		
+		&:not(.show)
+		{
+			opacity: 0;
+		}
+	}
+	
+	ul
+	{
+		&.show
+		{
+			padding-left: 2em;
+			list-style: initial;
+		}
+	}
+}
+
+footer
+{
+	@include general;
+	text-align: right;
+}
